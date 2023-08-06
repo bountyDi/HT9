@@ -25,33 +25,31 @@ void Recurcion64(int m, int n)
     Recurcion64(m, n);
 }
 
-
-void Task66()
-{
-    //Задайте значения M и N. Напишите рекурсивный метод, кот. 
-    //найдёт сумму натуральных элементов в промежутке от M до N.
-    int m = Input("Enter start number");
-    int n = Input("Enter final number");
-    int sum = 0;
-    while (m<=n)
-    {
-        sum+=m;
-        m++;
-    }
-    Console.WriteLine(sum);
-}
-
-void Recurcion66(int m, int n, int sum)
+int Recurcion66(int m, int n, int sum =0)
 {
     if (m>n) 
     {
-        return;
-        Console.WriteLine(sum);
+        return sum;
     }
     sum+=m;
-    Recurcion66(m+1, n, sum);
+    return Recurcion66(m+1, n, sum);
 }
-//Recurcion66(1, 15, 0); 
+//int m = Input("Enter start number");
+//int n = Input("Enter final number");
+//int sum = Recurcion66(m, n);
+//Console.WriteLine($"Сумма чисел в промежутке от m до n = {sum}"); 
 
+int A(int m, int n)
+{
+    if (m==0) return n+1;
+    else if (n==0) return A(m-1, 1);
+    else 
+    {
+        return A(m-1,A(m,n-1));
+    }
+}
+int m = Input("Enter firs number");
+int n = Input("Enter second number");
+Console.WriteLine($"Ackermann({m}, {n}) = {A(m,n)}");
 
 
